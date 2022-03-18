@@ -60,7 +60,7 @@ public abstract class DequeTest {
   
   @Test
   @DisplayName("insertBack() correctly insert at back.")
-  public void insertBackCorrectlyInsertAtFront() {
+  public void insertBackCorrectlyInsertAtBack() {
     deque.insertBack("a");
     deque.insertBack("b");
     deque.insertBack("c");
@@ -112,6 +112,23 @@ public abstract class DequeTest {
     deque.removeFront();
     deque.removeFront();
     deque.removeFront();
+    assertEquals(0, deque.length());
+  }
+  
+  @Test
+  @DisplayName("Deque can behave like a stack correctly")
+  public void DequeCanBehaveLikeAStack() {
+    char ch = 'a';
+    for (int i = 0; i < 10; i++) {
+      deque.insertFront(Character.toString(ch));
+      ch++;
+    }
+    assertEquals(10, deque.length());
+    for (int i = 0; i < 10; i++) {
+      assertEquals(Character.toString(ch), deque.front());
+      deque.removeFront();
+      ch--;
+    }
     assertEquals(0, deque.length());
   }
 }
