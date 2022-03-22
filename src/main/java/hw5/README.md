@@ -35,3 +35,23 @@ In both main methods, I try to insert `0~9`, then call `has()` to check every ev
     
 ## Profiling
 
+| Benchmark                        | Mode |  Cnt |      Score | Error | Units |
+|:---------------------------------|------|-----:|-----------:|-------|-------|
+| JmhRuntimeTest.arraySet          | avgt |    2 |   3665.644 |       | ms/op |
+| JmhRuntimeTest.linkedSet         | avgt |    2 |  11175.967 |       | ms/op |
+| JmhRuntimeTest.moveToFront       | avgt |    2 |    262.301 |       | ms/op |
+| JmhRuntimeTest.transposeSequence | avgt |    2 |   1179.690 |       | ms/op |
+
+- In `setUP()`, I add `0~9999` into the data array and shuffle it; In the `experiment()` function, I insert the elements in data array
+into each 4 different kinds of sets. Therefore, we now have an array `set` that contains `0~9999` at random positions. 
+
+- Next I define an array called `listToSearch` of size 1000, and insert a random number from range `0~99`. This array contains the
+number we will search in `set`.
+
+- Lastly, I perform a search of all numbers in `listToSearch` 1000 times and get the benchmark result above.
+
+We observe that `moveToFront` and `transposeSequence` is much faster than `linkedSet` and `arraySet` respectively.
+This is because during first few searches, `moveToFront` heuristic moves all target values directly to the front of linked list, which
+speeds up the searching process immediately; While `transposeSequence` heuristic moves target values one position forward at a time, so 
+it takes some searches to move all frequently searched elements to the front of array. Therefore, `transposeSequence` speeds up the searching
+gradually.
