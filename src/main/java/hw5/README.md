@@ -1,6 +1,7 @@
 # Discussion
 
 ## Flawed Deque
+
 - **Flaw 1: ** `insertBack()` This behaviour also leads to incorrect return value of `length()`.
     - Failing tests: `testInsertBackCorrectlyInsertAtBack`/`testDequeBehaveLikeABackStack`/`testCorrectLengthInsertBack`
     - Elaboration: 
@@ -12,6 +13,7 @@
     - Educated guess: 
       In the insertion of String representation of 0-199, I find `1, 3, 6, 11, 20, 37, 70, 135` are missing from deque. This sequence can be computed by the formula:
       `n_i = n + 2^(n-1) - 1`where `n` starts from `1`. There may be an if statement that checks if the inserted element is in the sequence, and ignores it if so.
+      
 - **Flaw 2**: `removeFront`, `removeBack` and `back` do not throw EmptyException when the deque is empty.
   - Failing tests:`testRemoveFrontThrowsEmptyExceptionIfEmpty`/`testRemoveBackThrowsEmptyExceptionIfEmpty`/`testBackThrowsExceptionIfEmpty` 
   - Elaboration:
