@@ -6,10 +6,11 @@ package hw5;
  * @param <T> Element type.
  */
 public class TransposeArraySet<T> extends ArraySet<T> {
-
-  // TODO: incorporate the transpose-sequential-search heuristic
-  //  each time a value is accessed. Override the relevant method(s) from ArraySet.
   
+  /**
+   * Main function used in hacking linear search.
+   * @param args NA
+   */
   public static void main(String[] args) {
     TransposeArraySet<Integer> arraySet = new TransposeArraySet<>();
     for (int i = 0; i < 10; i++) {

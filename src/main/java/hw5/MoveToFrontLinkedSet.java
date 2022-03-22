@@ -6,10 +6,11 @@ package hw5;
  * @param <T> Element type.
  */
 public class MoveToFrontLinkedSet<T> extends LinkedSet<T> {
-
-  // TODO: incorporate move-to-front heuristic each time a value is accessed.
-  //  Override the relevant method(s) from LinkedSet.
   
+  /**
+   * Main function used in hacking linear search.
+   * @param args NA
+   */
   public static void main(String[] args) {
     MoveToFrontLinkedSet<Integer> linkedSet = new MoveToFrontLinkedSet<>();
     for (int i = 0; i < 10; i++) {
