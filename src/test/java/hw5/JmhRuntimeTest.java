@@ -15,6 +15,7 @@ import org.openjdk.jmh.annotations.Warmup;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 @State(Scope.Benchmark)
@@ -27,7 +28,7 @@ public class JmhRuntimeTest {
   public void setUp() {
     // You may update this method.
     data = new ArrayList<>();
-    for (int i = 0; i < 1000; i++) {
+    for (int i = 0; i < 10000; i++) {
       data.add(i);
     }
     Collections.shuffle(data);
@@ -38,6 +39,18 @@ public class JmhRuntimeTest {
     // You may update this method.
     for (Integer num : data) {
       set.insert(num);
+    }
+    
+    Random rand = new Random();
+    int[] listToSearch = new int[1000];
+    for (int i = 0; i < listToSearch.length; i++) {
+      listToSearch[i] = rand.nextInt(100);
+    }
+  
+    for (int i = 0; i < 1000; i++) {
+      for (int num : listToSearch) {
+        set.has(num);
+      }
     }
   }
 
