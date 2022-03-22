@@ -22,8 +22,16 @@
     
 
 ## Hacking Linear Search
+In both main methods, I try to insert `0~9`, then call `has()` to check every even number, and call
+`remove()` to remove all of them.
 
-
-
+- **MoveToFrontLinkedSet**
+    - `has()` puts all even numbers at the start of linked list, which is what we want. In every `remove()` call
+       `find()` is executed to move the element ready to be removed at the head of linked list and perform O(n) removal. 
+- **TransposeArraySet**
+    - `has()` moves all even numbers one slot forward, which is what we want to speed up the linear search. But the calls to `find()` in every
+      `remove()` does another swap between the removal target and its predecessor. This is generally inefficient since it is not necessary to 
+      move the target forward if we are going to remove it, so that no future search will be called on that element.
+    
 ## Profiling
 
