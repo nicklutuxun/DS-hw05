@@ -10,6 +10,18 @@ public class TransposeArraySet<T> extends ArraySet<T> {
   // TODO: incorporate the transpose-sequential-search heuristic
   //  each time a value is accessed. Override the relevant method(s) from ArraySet.
   
+  public static void main(String[] args) {
+    TransposeArraySet<Integer> arraySet = new TransposeArraySet<>();
+    for (int i = 0; i < 10; i++) {
+      arraySet.insert(i);
+    }
+    for (int i = 0; i < 10; i = i + 2) {
+      arraySet.has(i);
+    }
+    for (int i = 0; i < 10; i = i + 2) {
+      arraySet.remove(Integer.valueOf(i));
+    }
+  }
   
   @Override
   protected int find(T t) {

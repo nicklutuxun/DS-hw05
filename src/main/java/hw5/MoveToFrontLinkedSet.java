@@ -10,6 +10,18 @@ public class MoveToFrontLinkedSet<T> extends LinkedSet<T> {
   // TODO: incorporate move-to-front heuristic each time a value is accessed.
   //  Override the relevant method(s) from LinkedSet.
   
+  public static void main(String[] args) {
+    MoveToFrontLinkedSet<Integer> linkedSet = new MoveToFrontLinkedSet<>();
+    for (int i = 0; i < 10; i++) {
+      linkedSet.insert(i);
+    }
+    for (int i = 0; i < 10; i = i + 2) {
+      linkedSet.has(i);
+    }
+    for (int i = 0; i < 10; i = i + 2) {
+      linkedSet.remove(i);
+    }
+  }
   
   @Override
   protected Node<T> find(T t) {
